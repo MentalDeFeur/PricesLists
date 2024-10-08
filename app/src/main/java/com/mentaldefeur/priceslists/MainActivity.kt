@@ -50,8 +50,7 @@ fun MyApp() {
     val context = LocalContext.current
     var text1 by remember { mutableStateOf("") }
     var text2 by remember { mutableStateOf("") }
-    var text3 by remember { mutableStateOf("") }
-
+    
     Box(
         modifier = Modifier.fillMaxSize()
             .background(Color.White),
