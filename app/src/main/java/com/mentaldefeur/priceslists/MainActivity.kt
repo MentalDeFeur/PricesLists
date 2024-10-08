@@ -5,7 +5,9 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -23,6 +25,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.Role.Companion.Button
 import androidx.compose.ui.text.TextStyle
@@ -49,13 +52,18 @@ fun MyApp() {
     var text2 by remember { mutableStateOf("") }
     var text3 by remember { mutableStateOf("") }
 
+    Box(
+        modifier = Modifier.fillMaxSize()
+            .background(Color.White),
+    )
+
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .fillMaxWidth()
             .padding(16.dp),
         verticalArrangement = Arrangement.Center
     ){
-
         Text(
             text = "Connexion",
             fontSize = 16.sp,
@@ -73,7 +81,7 @@ fun MyApp() {
         Spacer(modifier = Modifier.height(16.dp))
 
         OutlinedTextField(
-            value = text1,
+            value = text2,
             onValueChange = { text2 = it },
             label = {Text("Votre mot de passe")},
             modifier = Modifier.fillMaxWidth())
