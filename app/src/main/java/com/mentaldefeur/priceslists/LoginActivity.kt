@@ -16,7 +16,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -28,12 +27,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.Role.Companion.Button
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.mentaldefeur.priceslists.ui.theme.PricesListsTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,48 +49,52 @@ fun MyApp() {
     var text2 by remember { mutableStateOf("") }
 
     Box(
-        modifier = Modifier.fillMaxSize()
-            .background(Color.White),
-    )
-
-    Column(
         modifier = Modifier
             .fillMaxSize()
-            .fillMaxWidth()
-            .padding(16.dp),
-        verticalArrangement = Arrangement.Center
-    ){
-        Text(
-            text = "Connexion",
-            fontSize = 16.sp,
-            textAlign = TextAlign.Center
-        )
+            .background(Color.White)
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = "Connexion",
+                fontSize = 16.sp,
+                textAlign = TextAlign.Center
+            )
 
-        Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
-        OutlinedTextField(
-            value = text1,
-            onValueChange = { text1 = it },
-            label = {Text("Votre adresse e-mail")},
-            modifier = Modifier.fillMaxWidth())
+            OutlinedTextField(
+                value = text1,
+                onValueChange = { text1 = it },
+                label = { Text("Votre adresse e-mail") },
+                modifier = Modifier.fillMaxWidth()
+            )
 
-        Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
-        OutlinedTextField(
-            value = text2,
-            onValueChange = { text2 = it },
-            label = {Text("Votre mot de passe")},
-            modifier = Modifier.fillMaxWidth())
+            OutlinedTextField(
+                value = text2,
+                onValueChange = { text2 = it },
+                label = { Text("Votre mot de passe") },
+                modifier = Modifier.fillMaxWidth()
+            )
 
-        Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
-
-        Button(onClick = {
-            Toast.makeText(context,"Texte 1: $text1\nTexte2: $text2",Toast.LENGTH_LONG).show()
-        },
-            modifier = Modifier.align(Alignment.CenterHorizontally)
-        ){
-            Text("Valider")
+            Button(
+                onClick = {
+                    Toast.makeText(context, "Texte 1: $text1\nTexte2: $text2", Toast.LENGTH_LONG).show()
+                },
+                modifier = Modifier.align(Alignment.CenterHorizontally)
+            ) {
+                Text("Valider")
+            }
         }
     }
 }
